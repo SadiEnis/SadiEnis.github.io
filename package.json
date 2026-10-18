@@ -1,0 +1,1 @@
+{"name":"enis-portfolio","version":"0.1.0","private":true,"scripts":{"dev":"next dev --hostname 127.0.0.1 --port 3100","build":"next build","typecheck":"tsc --noEmit"},"dependencies":{"next":"16.4.2","react":"19.2.6","react-dom":"19.2.6"},"devDependencies":{"typescript":"5.7.3","@types/node":"22.19.9","@types/react":"19.2.14","@types/react-dom":"19.2.3"}}
