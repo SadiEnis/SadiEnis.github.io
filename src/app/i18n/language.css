@@ -1,0 +1,20 @@
+.language-picker { position: relative; flex: 0 0 auto; }
+.language-picker summary { display: flex; align-items: center; gap: 7px; cursor: pointer; list-style: none; border: 1px solid var(--line); border-radius: 25px; min-height: 42px; padding: 8px 12px; font-size: 12px; }
+.language-picker summary::-webkit-details-marker { display: none; }
+.language-flag { width: 24px; height: 16px; flex-shrink: 0; border-radius: 2px; box-shadow: 0 0 0 1px #ffffff20; }
+.language-options { position: absolute; z-index: 30; top: calc(100% + 10px); right: 0; width: 170px; padding: 6px; border: 1px solid #45514c; border-radius: 8px; background: #171c1d; box-shadow: 0 12px 30px #0008; }
+.language-options button { width: 100%; display: flex; gap: 10px; align-items: center; padding: 12px 9px; color: var(--text); background: none; border: 0; border-radius: 4px; font: inherit; font-size: 13px; text-align: left; cursor: pointer; }
+.language-options button > span:nth-child(2) { flex: 1; }
+.language-options button:hover, .language-options button[aria-pressed="true"] { background: #b8f0d418; color: var(--mint); }
+.language-picker summary:focus-visible, .language-options button:focus-visible { outline: 2px solid var(--mint); outline-offset: 3px; }
+@media(max-width: 1000px) { header nav { gap: 18px; } }
+@media(max-width: 650px) {
+  header { height: auto; min-height: 100px; padding-top: 18px; padding-bottom: 18px; flex-wrap: wrap; gap: 16px; }
+  header nav { width: 100%; justify-content: space-between; gap: 10px; font-size: 11px; flex-wrap: wrap; }
+  header .nav-contact { border: 0; padding: 0; }
+  header .nav-contact span { margin-left: 3px; }
+  .language-picker summary { padding: 6px 8px; min-height: 36px; gap: 5px; font-size: 11px; }
+  .language-flag { width: 21px; height: 14px; }
+  .contact h1, .motivation-page h1 { font-size: clamp(32px, 8.5vw, 48px); overflow-wrap: anywhere; }
+  .contact-links strong { font-size: clamp(20px, 5.5vw, 25px); }
+}

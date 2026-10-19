@@ -1,0 +1,7 @@
+.git
+.openai
+.next
+out
+node_modules
+*.md
+*.tsbuildinfo

@@ -1,0 +1,82 @@
+/* Resume sheet — single column, DOM order matches reading order (ATS friendly). */
+.cv-page { padding: 48px 0 92px; }
+.cv-sheet {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 42px 50px 38px;
+  background: #f6f6f1;
+  color: #16191a;
+  border-radius: 5px;
+  box-shadow: 0 28px 70px #0000008c;
+  font-size: 12px;
+  line-height: 1.58;
+}
+.cv-sheet h1 { font-family: Manrope, sans-serif; font-size: 27px; font-weight: 800; letter-spacing: -1.1px; margin: 0; color: #16191a; }
+.cv-sheet h2 {
+  font-family: monospace; font-size: 10px; font-weight: 400; letter-spacing: 1.8px;
+  text-transform: uppercase; color: #4d5a56; margin: 0 0 8px;
+  padding-bottom: 4px; border-bottom: 1px solid #16191a24;
+}
+.cv-sheet h3 { font-family: Manrope, sans-serif; font-size: 13.5px; font-weight: 700; letter-spacing: -.3px; margin: 0; color: #16191a; }
+.cv-sheet a { color: #0f6b4c; text-decoration: none; }
+.cv-contact-list a, .cv-entry-link a { border-bottom: 1px solid #0f6b4c40; }
+.cv-contact-list a:hover, .cv-entry-link a:hover { border-bottom-color: #0f6b4c; }
+/* Reset the global site-header rule (globals.css targets every <header>). */
+.cv-header {
+  display: block; height: auto; max-width: none; margin: 0; padding: 0 0 13px;
+  align-items: normal; justify-content: normal;
+  border-bottom: 2px solid #16191a;
+}
+.cv-title { font-family: monospace; font-size: 10.5px; letter-spacing: 1.4px; text-transform: uppercase; color: #0f6b4c; margin: 6px 0 0; }
+.cv-contact-list { list-style: none; margin: 11px 0 0; padding: 0; font-size: 11.5px; color: #38403e; }
+.cv-contact-list li { display: block; margin-bottom: 2px; }
+.cv-contact-label {
+  display: inline-block; width: 76px; margin-right: 10px;
+  font-family: monospace; font-size: 9.5px; letter-spacing: 1.1px; text-transform: uppercase; color: #7c8a85;
+}
+.cv-section { margin-top: 16px; }
+.cv-summary { margin: 0; color: #2b3130; }
+.cv-entry { margin-bottom: 13px; }
+.cv-entry:last-child { margin-bottom: 0; }
+.cv-entry-org { margin: 2px 0 0; color: #2f3635; }
+.cv-entry-date { margin: 1px 0 0; font-family: monospace; font-size: 10px; letter-spacing: .5px; color: #6c7a75; }
+.cv-entry-sub { margin: 3px 0 0; color: #4d5a56; }
+.cv-entry-recognition { margin: 3px 0 0; color: #0f6b4c; font-weight: 700; }
+.cv-entry-link { margin: 3px 0 0; font-size: 11px; }
+.cv-bullets { margin: 6px 0 0; padding-left: 16px; color: #38403e; }
+.cv-bullets li { margin-bottom: 3px; }
+.cv-bullets li::marker { color: #0f6b4c; }
+.cv-plain { margin: 0; padding-left: 16px; color: #38403e; }
+.cv-plain li { margin-bottom: 2px; }
+.cv-actions { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 22px; padding-top: 13px; border-top: 1px solid #16191a24; }
+.cv-actions .cv-download {
+  font-size: 12px; font-weight: 700; cursor: pointer; text-decoration: none;
+  background: #0f6b4c; color: #f6f6f1; border: 0; border-bottom: 0; border-radius: 3px; padding: 11px 18px;
+}
+.cv-actions .cv-download:hover { background: #0c583e; color: #f6f6f1; }
+.cv-actions .cv-download:focus-visible { outline: 2px solid #0f6b4c; outline-offset: 3px; }
+.cv-back { font-size: 12px; color: #0f6b4c; text-decoration: underline; text-underline-offset: 4px; }
+.cv-back:hover { text-decoration-thickness: 2px; }
+.cv-actions-top { margin: 0 0 24px; padding: 0; border: 0; justify-content: flex-end; }
+.cv-actions { flex-wrap: wrap; }
+.cv-back:focus-visible { outline: 2px solid #0f6b4c; outline-offset: 3px; }
+
+@media (max-width: 700px) {
+  .cv-page { padding: 22px 0 58px; }
+  .cv-sheet { padding: 22px 18px; border-radius: 4px; }
+  .cv-contact-line { font-size: 11px; }
+}
+
+@media print {
+  @page { size: A4; margin: 13mm; }
+  body:has(.cv-page) { background: #fff; }
+  body:has(.cv-page) > header,
+  body:has(.cv-page) > footer,
+  body:has(.cv-page) > .skip { display: none; }
+  .cv-page { padding: 0; }
+  .cv-sheet { max-width: none; margin: 0; padding: 0; background: #fff; color: #16191a; box-shadow: none; border-radius: 0; font-size: 10.5px; line-height: 1.5; }
+  .cv-actions { display: none; }
+  .cv-section { margin-top: 13px; }
+  .cv-entry, .cv-bullets li, .cv-plain li { break-inside: avoid; }
+  .cv-sheet h1, .cv-sheet h2, .cv-sheet h3 { break-after: avoid; }
+}
