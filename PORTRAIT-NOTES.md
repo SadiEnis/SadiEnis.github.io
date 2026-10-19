@@ -1,5 +1,9 @@
 # Portrait trial
 
+## Current version
+
+The hero now uses `public/images/enis-devfest-original.jpg`, a byte-for-byte copy of the owner's original photo. The white event background is preserved. No AI processing, blur, mask, or color filter is applied to this version. The earlier cutout below is retained only as an unused trial.
+
 Asset: `public/images/enis-portrait-v1.png`
 
 Created using the built-in imagegen tool from the owner's DevFest photograph. The source photograph remains untouched. This is an AI-generated background extraction trial; exact facial pixel fidelity is not guaranteed. Inspect against the original before treating it as a final portrait.
