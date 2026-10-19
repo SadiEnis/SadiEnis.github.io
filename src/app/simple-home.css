@@ -1,0 +1,39 @@
+.simple-home { width: 86%; max-width: 1000px; margin: auto; }
+.simple-intro { display: grid; grid-template-columns: 1fr 270px; gap: 90px; align-items: center; padding: 80px 0 85px; }
+.simple-role { color: var(--mint); font-size: 15px; margin: 0 0 16px; }
+.simple-intro h1 { font-size: clamp(40px, 4.7vw, 62px); line-height: 1.12; letter-spacing: -2px; }
+.simple-intro h1 span { color: var(--mint); }
+.simple-lead { font-size: 19px; line-height: 1.65; margin: 24px 0 16px; max-width: 540px; }
+.simple-bio { font-size: 15px; line-height: 1.85; color: var(--muted); max-width: 530px; margin: 0; }
+.simple-actions { display: flex; gap: 28px; flex-wrap: wrap; margin-top: 26px; font-size: 13px; }
+.simple-actions a:first-child { color: var(--mint); }
+.simple-actions a:hover, .simple-project-heading a:hover { text-decoration: underline; text-underline-offset: 5px; }
+.simple-photo { width: 100%; height: auto; display: block; border-radius: 6px; }
+.simple-work { border-top: 1px solid var(--line); padding-top: 40px; }
+.simple-work h2 { font-size: 27px; letter-spacing: -.7px; margin-bottom: 10px; }
+.simple-projects article { display: grid; grid-template-columns: 270px 1fr; gap: 60px; padding: 32px 0; border-bottom: 1px solid var(--line); }
+.simple-project-heading h3 { font-size: 20px; letter-spacing: -.5px; line-height: 1.4; }
+.simple-project-heading h3 span { color: var(--mint); font-size: 16px; margin-left: 6px; }
+.simple-project-heading > p { font-size: 12px; line-height: 1.7; margin: 9px 0 0; color: var(--muted); }
+.simple-project-description > p { font-size: 15px; line-height: 1.8; margin: 0 0 10px; color: var(--muted); }
+.simple-project-description > p:last-of-type { margin-bottom: 0; }
+.simple-project-description details { margin-top: 17px; }
+.simple-project-description summary { color: var(--mint); font-size: 12px; cursor: pointer; width: fit-content; padding: 5px 0; }
+.simple-project-description summary:focus-visible { outline: 2px solid var(--mint); outline-offset: 5px; }
+.simple-project-description details p { font-size: 14px; line-height: 1.8; color: var(--muted); margin: 10px 0 0; }
+.simple-connect { padding: 38px 0 58px; display: flex; justify-content: space-between; gap: 20px; align-items: center; font-size: 14px; }
+.simple-connect p { color: var(--muted); margin: 0; }
+.simple-connect a { color: var(--mint); }
+@media(max-width: 900px) {
+  .simple-intro { grid-template-columns: 1fr 220px; gap: 45px; padding: 60px 0; }
+  .simple-projects article { grid-template-columns: 220px 1fr; gap: 35px; }
+}
+@media(max-width: 600px) {
+  .simple-intro { grid-template-columns: 1fr; gap: 30px; padding: 45px 0; }
+  .simple-intro h1 { font-size: 44px; }
+  .simple-photo { max-width: 210px; }
+  .simple-lead { font-size: 18px; }
+  .simple-projects article { grid-template-columns: 1fr; gap: 16px; padding: 26px 0; }
+  .simple-work { padding-top: 30px; }
+  .simple-connect { align-items: flex-start; flex-direction: column; gap: 14px; padding-bottom: 40px; }
+}
