@@ -1,6 +1,7 @@
 export const projects = [
   {
     name: 'Project First Run',
+    image: '/images/projects/first-run.png',
     type: 'Unity 6 · C# · Solo development',
     description: 'A first-person roguelite arena shooter where players fight enemy waves, earn XP, and shape their build through weapons, abilities, and chest rewards.',
     contribution: 'I own the full development, from gameplay systems and UI to integration. The project focuses on modular combat, data-driven content, and testable gameplay rules.',
@@ -10,7 +11,19 @@ export const projects = [
     details: 'Pure C# objects own gameplay rules where practical, while Unity components handle input, scene composition, presentation, and lifecycle integration. ScriptableObjects define content separately from mutable runtime state. EditMode and PlayMode suites cover combat, enemies, rewards, progression, and arena transitions.'
   },
   {
+    name: 'Meowstery Wisp',
+    image: '/images/projects/meowstery-wisp.png',
+    type: 'Unity · C# · DMT Games',
+    description: 'A multiplayer social deduction and investigation game for 4–11 players. Cat detectives search for clues and artifacts while hidden roles manipulate trust and disrupt the investigation. Players remain in the game until the final phase.',
+    contribution: 'My contribution focused on multiplayer lobby systems: lobby creation, player joining, session connectivity, and synchronized lobby state management.',
+    highlights: ['Developed and integrated lobby systems using Unity Relay, Netcode for GameObjects, and a host-client architecture.', 'Used Unity Vivox for voice communication between players.'],
+    status: 'Available on Steam in Early Access.',
+    url: 'https://store.steampowered.com/app/4265380/Meowstery_Wisp/',
+    details: 'I worked on the networking and lobby layer of the studio’s primary title, connecting players to sessions and keeping lobby state synchronized. This contribution covers multiplayer infrastructure and voice communication, rather than ownership of the full game.'
+  },
+  {
     name: 'OceanClean',
+    image: '/images/projects/ocean-clean.png',
     type: 'Unity · C# · Graduation project',
     description: 'A 2D online co-op game for 1–4 players. Players collect ocean waste, deliver it to recycling points, and earn score and in-game currency during short multiplayer sessions.',
     contribution: 'Developed as my graduation project, combining gameplay programming, online multiplayer, player-facing UI, and API-integrated progression.',
@@ -21,6 +34,7 @@ export const projects = [
   },
   {
     name: '3Match',
+    image: '',
     type: 'Personal prototype · Match-3',
     description: 'A personal match-3 prototype, created as an experiment with the genre.',
     contribution: '', highlights: [], status: 'Prototype.',
