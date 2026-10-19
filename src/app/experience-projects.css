@@ -16,7 +16,25 @@
 .experience-content > .experience-role { color: var(--mint); font-size: 13px; margin-top: 13px; }
 .simple-projects article.project-with-image { position: relative; isolation: isolate; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; grid-template-columns: 36% 1fr; gap: 0; padding: 0; margin-top: 24px; min-height: 400px; background: #101314; }
 .project-backdrop { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: -2; }
-.project-with-image::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,14,15,.74) 0%, rgba(10,14,15,.87) 30%, rgba(10,14,15,.96) 65%); z-index: -1; }
+.project-with-image::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,14,15,.74) 0%, rgba(10,14,15,.87) 30%, rgba(10,14,15,.96) 65%); z-index: -1; transition: opacity .35s ease; }
+/* Clicking anywhere outside the links and the details toggle reveals the artwork. */
+.project-with-image { cursor: pointer; }
+.project-with-image .simple-project-heading,
+.project-with-image .simple-project-description { transition: opacity .35s ease; }
+.project-with-image.is-revealed::before { opacity: 0; }
+.project-with-image.is-revealed .simple-project-heading,
+.project-with-image.is-revealed .simple-project-description { opacity: 0; pointer-events: none; }
+.project-media-trigger {
+  position: absolute; top: 14px; left: 14px; z-index: 3;
+  font: 9px/1 monospace; letter-spacing: 1.2px; text-transform: uppercase;
+  color: var(--mint); background: #101314d9; border: 1px solid #b8f0d444;
+  padding: 7px 10px; border-radius: 3px; cursor: pointer;
+  opacity: 0; transition: opacity .2s ease;
+}
+.project-with-image:hover .project-media-trigger,
+.project-with-image.is-revealed .project-media-trigger,
+.project-media-trigger:focus-visible { opacity: 1; }
+.project-media-trigger:focus-visible { outline: 2px solid var(--mint); outline-offset: 2px; }
 .project-with-image .simple-project-heading { padding: 30px 25px; align-self: end; }
 .project-with-image .simple-project-heading h3 { font-size: 26px; line-height: 1.2; text-shadow: 0 2px 4px #000, 0 0 12px #000; }
 .project-with-image .simple-project-heading > p { color: white; text-shadow: 0 1px 3px #000, 0 0 6px #000; }
@@ -40,4 +58,10 @@
   .project-with-image::before { display: none; }
   .project-backdrop { position: static; display: block; width: 100%; height: auto; object-fit: contain; z-index: auto; }
   .project-with-image .simple-project-description { padding: 0 20px 24px; }
+  /* The artwork is already its own banner above the text here, so the reveal is off. */
+  .project-with-image { cursor: default; }
+  .project-media-trigger { display: none; }
+  .project-with-image.is-revealed::before { opacity: 1; }
+  .project-with-image.is-revealed .simple-project-heading,
+  .project-with-image.is-revealed .simple-project-description { opacity: 1; pointer-events: auto; }
 }

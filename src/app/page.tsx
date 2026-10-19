@@ -1,8 +1,31 @@
 'use client';
 import Link from 'next/link';
+import { useState } from 'react';
 
 import { useLanguage } from './i18n/provider';
 
+
+type Project = ReturnType<typeof useLanguage>['t']['projects'][number];
+
+function ProjectCard({project, detailsLabel, showLabel, hideLabel}: {project: Project; detailsLabel: string; showLabel: string; hideLabel: string}) {
+  const [revealed, setRevealed] = useState(false);
+  const toggle = () => setRevealed(value => !value);
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    // Below 600px the artwork sits above the text as its own banner, so there is
+    // nothing to reveal. Matches the layout breakpoint in experience-projects.css.
+    if (window.matchMedia('(max-width: 600px)').matches) return;
+    // Links, the details toggle and any other control keep their own behaviour.
+    const target = event.target as HTMLElement;
+    if (target.closest('a, button, summary, details, input, textarea, select, label')) return;
+    toggle();
+  };
+  return <article className={`${project.image ? 'project-with-image' : ''}${revealed ? ' is-revealed' : ''}`} onClick={handleClick}>
+    {project.image && <img className="project-backdrop" src={project.image} alt="" width="1400" height="800" loading="lazy" />}
+    {project.image && <button type="button" className="project-media-trigger" aria-expanded={revealed} onClick={(event) => { event.stopPropagation(); toggle(); }}>{revealed ? hideLabel : showLabel}</button>}
+    <div className="simple-project-heading"><h3><a href={project.url}>{project.name} <span aria-hidden="true">↗</span></a></h3><p>{[project.stack, project.platform, project.label].filter(Boolean).join(' · ')}</p></div>
+    <div className="simple-project-description"><p>{project.description}</p>{project.contribution && <p>{project.contribution}</p>}{project.highlights.length > 0 && <ul className="project-highlights">{project.highlights.map(item => <li key={item}>{item}</li>)}</ul>}<p className="project-status">{project.status}</p>{project.recognition && <p className="project-recognition">{project.recognition}</p>}{project.details && <details><summary>{detailsLabel}</summary><p>{project.details}</p></details>}</div>
+  </article>;
+}
 
 export default function Home() { const {t} = useLanguage(); const {projects, experiences, education} = t;
   return <main id="main" className="simple-home">
@@ -47,11 +70,7 @@ export default function Home() { const {t} = useLanguage(); const {projects, exp
     </section>
     <section className="simple-work" id="work" aria-labelledby="work-heading">
       <h2 id="work-heading">{t.home.projects}</h2>
-      <div className="simple-projects">{projects.map(project => <article key={project.name} className={project.image ? 'project-with-image' : ''}>
-        {project.image && <img className="project-backdrop" src={project.image} alt="" width="1400" height="800" loading="lazy" />}
-        <div className="simple-project-heading"><h3><a href={project.url}>{project.name} <span aria-hidden="true">↗</span></a></h3><p>{[project.stack, project.platform, project.label].filter(Boolean).join(' · ')}</p></div>
-        <div className="simple-project-description"><p>{project.description}</p>{project.contribution && <p>{project.contribution}</p>}{project.highlights.length > 0 && <ul className="project-highlights">{project.highlights.map(item => <li key={item}>{item}</li>)}</ul>}<p className="project-status">{project.status}</p>{project.recognition && <p className="project-recognition">{project.recognition}</p>}{project.details && <details><summary>{t.home.details}</summary><p>{project.details}</p></details>}</div>
-      </article>)}</div>
+      <div className="simple-projects">{projects.map(project => <ProjectCard key={project.name} project={project} detailsLabel={t.home.details} showLabel={t.home.showImage} hideLabel={t.home.hideImage} />)}</div>
     </section>
     <div className="simple-connect"><p>{t.home.question}</p><Link href="/contact/">{t.home.contact} ↗</Link></div>
   </main>;

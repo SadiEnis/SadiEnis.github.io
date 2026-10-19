@@ -22,6 +22,8 @@ const en = {
     currently: 'Currently a Junior Game Developer at DMT Games in Dover, Delaware, working on Meowstery Wisp in Early Access on Steam.',
     resume: 'Resume',
     statusLabel: 'Status',
+    showImage: 'Show image',
+    hideImage: 'Hide image',
   },
   contact: { eyebrow: 'START A CONVERSATION', heading: 'Good games start', middle: 'with', accent: 'a connection.', intro: 'Have a gameplay role in mind, a project to discuss, or a question about my work? Let’s talk.', hello: 'LinkedIn', linkedin: 'sadienisgucluer', emailLabel: 'Email', phoneLabel: 'Phone', code: 'GitHub', github: 'SadiEnis', resume: 'Resume', resumeLink: 'View my resume', professional: 'Professional experience with Unity.', personal: 'Personal exploration with Unreal Engine.' },
   motivation: {
@@ -63,6 +65,8 @@ const tr: Messages = {
     currently: 'Şu anda Dover, Delaware’da DMT Games bünyesinde Junior Game Developer olarak çalışıyorum; Meowstery Wisp Steam Early Access’te.',
     resume: 'Özgeçmiş',
     statusLabel: 'Durum',
+    showImage: 'Görseli göster',
+    hideImage: 'Görseli kapat',
   },
   contact: { eyebrow: 'BİR SOHBET BAŞLATALIM', heading: 'İyi oyunlar', middle: '', accent: 'iletişimle başlar.', intro: 'Aklında bir oynanış geliştirme pozisyonu, konuşmak istediğin bir proje veya çalışmalarım hakkında bir soru mu var? Konuşalım.', hello: 'LinkedIn', linkedin: 'sadienisgucluer', emailLabel: 'E-posta', phoneLabel: 'Telefon', code: 'GitHub', github: 'SadiEnis', resume: 'Özgeçmiş', resumeLink: 'Özgeçmişimi görüntüle', professional: 'Unity ile profesyonel deneyim.', personal: 'Unreal Engine ile kişisel çalışmalar.' },
   motivation: {
@@ -113,6 +117,8 @@ const pl: Messages = {
     currently: 'Obecnie Junior Game Developer w DMT Games w Dover, Delaware, pracuję nad Meowstery Wisp w Early Access na Steamie.',
     resume: 'CV',
     statusLabel: 'Status',
+    showImage: 'Pokaż obraz',
+    hideImage: 'Ukryj obraz',
   },
   contact: { eyebrow: 'ZACZNIJMY ROZMOWĘ', heading: 'Dobre gry zaczynają się', middle: 'od', accent: 'nawiązania kontaktu.', intro: 'Masz ofertę pracy przy rozgrywce, projekt do omówienia lub pytanie o moje prace? Porozmawiajmy.', hello: 'LinkedIn', linkedin: 'sadienisgucluer', emailLabel: 'E-mail', phoneLabel: 'Telefon', code: 'GitHub', github: 'SadiEnis', resume: 'CV', resumeLink: 'Zobacz moje CV', professional: 'Doświadczenie zawodowe w Unity.', personal: 'Własne projekty w Unreal Engine.' },
   motivation: {
