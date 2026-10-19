@@ -18,6 +18,9 @@
 .simple-project-description > p { font-size: 15px; line-height: 1.8; margin: 0 0 10px; color: var(--muted); }
 .simple-project-description > p:last-of-type { margin-bottom: 0; }
 .simple-project-description details { margin-top: 17px; }
+.project-highlights { padding-left: 18px; margin: 17px 0; color: var(--muted); font-size: 14px; line-height: 1.8; }
+.project-highlights li + li { margin-top: 9px; }
+.simple-project-description > .project-status { font-size: 12px; line-height: 1.7; color: var(--mint); margin-top: 15px; }
 .simple-project-description summary { color: var(--mint); font-size: 12px; cursor: pointer; width: fit-content; padding: 5px 0; }
 .simple-project-description summary:focus-visible { outline: 2px solid var(--mint); outline-offset: 5px; }
 .simple-project-description details p { font-size: 14px; line-height: 1.8; color: var(--muted); margin: 10px 0 0; }
