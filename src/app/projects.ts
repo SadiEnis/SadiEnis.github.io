@@ -1,4 +1,24 @@
-export const projects = [
+export type Project = {
+  name: string;
+  image: string;
+  video?: string;
+  stack: string;
+  platform: string;
+  label: string;
+  period: string;
+  subtitle: string;
+  inResume: boolean;
+  description: string;
+  contribution: string;
+  highlights: string[];
+  resumeHighlights: string[];
+  status: string;
+  recognition?: string;
+  url: string;
+  details: string;
+};
+
+export const projects: Project[] = [
   {
     name: 'Project First Run',
     image: '/images/projects/first-run.png',
