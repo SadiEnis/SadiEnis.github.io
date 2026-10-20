@@ -36,6 +36,22 @@ function LanguagePicker() {
 export function SiteHeader() {
   const {t} = useLanguage();
   const [hidden, setHidden] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    const outside = (event: PointerEvent) => {
+      if (!headerRef.current?.contains(event.target as Node)) setMenuOpen(false);
+    };
+    const desktop = window.matchMedia('(min-width: 901px)');
+    const closeOnDesktop = () => { if (desktop.matches) setMenuOpen(false); };
+    document.addEventListener('pointerdown', outside);
+    desktop.addEventListener('change', closeOnDesktop);
+    return () => {
+      document.removeEventListener('pointerdown', outside);
+      desktop.removeEventListener('change', closeOnDesktop);
+    };
+  }, []);
   useEffect(() => {
     let lastY = window.scrollY;
     const onScroll = () => {
@@ -49,7 +65,30 @@ export function SiteHeader() {
     onScroll();
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
-  return <><a className="skip" href="#main">{t.nav.skip}</a><header className={hidden ? 'site-header is-hidden' : 'site-header'}><Link className="wordmark" href="/" aria-label="Sadi Enis Güçlüer">SE<span>G</span><i>.</i></Link><nav aria-label={t.nav.label}><Link href="/">{t.nav.about}</Link><Link href="/motivation/">{t.nav.motivation}</Link><Link href="/cv/">{t.nav.cv}</Link><Link className="nav-contact" href="/contact/">{t.nav.contact} <span>↗</span></Link><LanguagePicker/></nav></header></>;
+  return <><a className="skip" href="#main">{t.nav.skip}</a>
+    <header ref={headerRef} className={`site-header${hidden && !menuOpen ? ' is-hidden' : ''}`}
+      onKeyDown={event => {
+        if (event.key === 'Escape' && menuOpen) {
+          setMenuOpen(false);
+          menuButtonRef.current?.focus();
+        }
+      }}
+      onBlur={event => {
+        if (!event.currentTarget.contains(event.relatedTarget as Node)) setMenuOpen(false);
+      }}>
+      <Link className="wordmark" href="/" aria-label="Sadi Enis Güçlüer" onClick={() => setMenuOpen(false)}>SE<span>G</span><i>.</i></Link>
+      <nav id="site-navigation" className={`site-navigation${menuOpen ? ' is-open' : ''}`} aria-label={t.nav.label} onClick={event => {
+        if ((event.target as HTMLElement).closest('a')) setMenuOpen(false);
+      }}>
+        <Link href="/">{t.nav.about}</Link><Link href="/motivation/">{t.nav.motivation}</Link><Link href="/cv/">{t.nav.cv}</Link><Link className="nav-contact" href="/contact/">{t.nav.contact} <span aria-hidden="true">↗</span></Link>
+      </nav>
+      <LanguagePicker/>
+      <button ref={menuButtonRef} className="site-menu-toggle" type="button" aria-label={t.nav.label} aria-expanded={menuOpen} aria-controls="site-navigation" onClick={() => setMenuOpen(value => !value)}>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+          <path d={menuOpen ? 'M6 6l12 12M18 6 6 18' : 'M4 7h16M4 12h16M4 17h16'}/>
+        </svg>
+      </button>
+    </header></>;
 }
 export function SiteFooter() {
   const {t} = useLanguage();
