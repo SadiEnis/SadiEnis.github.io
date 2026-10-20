@@ -43,7 +43,7 @@ export function SiteHeader() {
     const outside = (event: PointerEvent) => {
       if (!headerRef.current?.contains(event.target as Node)) setMenuOpen(false);
     };
-    const desktop = window.matchMedia('(min-width: 901px)');
+    const desktop = window.matchMedia('(min-width: 751px)');
     const closeOnDesktop = () => { if (desktop.matches) setMenuOpen(false); };
     document.addEventListener('pointerdown', outside);
     desktop.addEventListener('change', closeOnDesktop);
