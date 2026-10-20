@@ -2,6 +2,7 @@ export const projects = [
   {
     name: 'Project First Run',
     image: '/images/projects/first-run.png',
+    video: '/videos/first-run-gameplay.mp4',
     stack: 'Unity 6 · C#', platform: 'PC', label: 'Solo Game Developer',
     period: 'July 2026 – Present',
     subtitle: 'First-person roguelite arena shooter',
@@ -59,13 +60,14 @@ export const projects = [
   {
     name: '3Match',
     image: '',
-    stack: '', platform: '', label: 'Personal prototype · Match-3',
+    stack: 'Unity · C#', platform: 'Mobile', label: 'DMT Internship Project',
     period: '',
     subtitle: '',
     inResume: false,
-    description: 'A personal match-3 prototype, created as an experiment with the genre.',
-    contribution: '', highlights: [], resumeHighlights: [],
+    description: 'A modular and extensible match-3 puzzle game developed with Unity and C#. The project prioritizes clean code architecture, independent systems, and the ability to add new features easily.',
+    contribution: 'The game includes a grid-based board, tile swapping, match detection, gravity, refilling, and cascades. A state machine manages the gameplay flow, while ScriptableObjects support data-driven level design. Customizable cell obstacles, goal tracking, move management, and dynamic level selection are also implemented.',
+    highlights: [], resumeHighlights: [],
     status: 'Prototype.',
-    url: 'https://github.com/SadiEnis/3Match', details: '',
+    url: 'https://github.com/SadiEnis/3Match', details: 'The project aims to provide a maintainable and extensible game framework where new levels and gameplay mechanics can be added without substantially changing the existing architecture.',
   },
 ];

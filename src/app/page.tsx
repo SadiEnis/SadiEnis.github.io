@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { useLanguage } from './i18n/provider';
 
@@ -9,7 +9,34 @@ type Project = ReturnType<typeof useLanguage>['t']['projects'][number];
 
 function ProjectCard({project, detailsLabel, showLabel, hideLabel}: {project: Project; detailsLabel: string; showLabel: string; hideLabel: string}) {
   const [revealed, setRevealed] = useState(false);
-  const toggle = () => setRevealed(value => !value);
+  const [playing, setPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const { t } = useLanguage();
+  const videoSrc = project.video;
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const syncMotion = () => {
+      if (motion.matches) video.pause();
+      else void video.play().catch(() => {});
+    };
+    syncMotion();
+    motion.addEventListener('change', syncMotion);
+    return () => {
+      motion.removeEventListener('change', syncMotion);
+      video.pause();
+    };
+  }, [videoSrc]);
+
+  const toggle = () => {
+    if (!revealed && videoRef.current) {
+      videoRef.current.currentTime = 0;
+      void videoRef.current.play().catch(() => {});
+    }
+    setRevealed(value => !value);
+  };
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     // Below 600px the artwork sits above the text as its own banner, so there is
     // nothing to reveal. Matches the layout breakpoint in experience-projects.css.
@@ -20,8 +47,14 @@ function ProjectCard({project, detailsLabel, showLabel, hideLabel}: {project: Pr
     toggle();
   };
   return <article className={`${project.image ? 'project-with-image' : ''}${revealed ? ' is-revealed' : ''}`} onClick={handleClick}>
-    {project.image && <img className="project-backdrop" src={project.image} alt="" width="1400" height="800" loading="lazy" />}
-    {project.image && <button type="button" className="project-media-trigger" aria-expanded={revealed} onClick={(event) => { event.stopPropagation(); toggle(); }}>{revealed ? hideLabel : showLabel}</button>}
+    {videoSrc ? <video ref={videoRef} className="project-backdrop" src={videoSrc} poster={project.image} width="1280" height="720" muted loop playsInline preload="metadata" aria-label={project.name} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} /> : project.image && <img className="project-backdrop" src={project.image} alt="" width="1400" height="800" loading="lazy" />}
+    {project.image && <button type="button" className="project-media-trigger" aria-expanded={revealed} onClick={(event) => { event.stopPropagation(); toggle(); }}>{videoSrc ? (revealed ? t.home.hideVideo : t.home.showVideo) : (revealed ? hideLabel : showLabel)}</button>}
+    {videoSrc && <button type="button" className="project-video-control" onClick={() => {
+      const video = videoRef.current;
+      if (!video) return;
+      if (video.paused) void video.play().catch(() => {});
+      else video.pause();
+    }}>{playing ? t.home.pauseVideo : t.home.playVideo}</button>}
     <div className="simple-project-heading"><h3><a href={project.url}>{project.name} <span aria-hidden="true">↗</span></a></h3><p>{[project.stack, project.platform, project.label].filter(Boolean).join(' · ')}</p></div>
     <div className="simple-project-description"><p>{project.description}</p>{project.contribution && <p>{project.contribution}</p>}{project.highlights.length > 0 && <ul className="project-highlights">{project.highlights.map(item => <li key={item}>{item}</li>)}</ul>}<p className="project-status">{project.status}</p>{project.recognition && <p className="project-recognition">{project.recognition}</p>}{project.details && <details><summary>{detailsLabel}</summary><p>{project.details}</p></details>}</div>
   </article>;
@@ -45,6 +78,14 @@ export default function Home() { const {t} = useLanguage(); const {projects, exp
       <p className="simple-status-target">{t.home.targeting}</p>
       <p className="simple-status-now">{t.home.currently}</p>
     </section>
+    <section className="simple-education" id="education" aria-labelledby="education-heading">
+      <h2 id="education-heading">{t.cv.education}</h2>
+      {education.map(item => <div className="education-entry" key={item.school}>
+        <p className="education-degree">{item.degree}</p>
+        <p className="education-school">{item.school} · {item.location}</p>
+        <p className="education-meta">{item.period} · {item.detail}</p>
+      </div>)}
+    </section>
     <section className="experiences" id="experience" aria-labelledby="experience-heading">
       <h2 id="experience-heading">{t.home.experience}</h2>
       {experiences.map(experience => <article className="experience-entry" key={experience.company}>
@@ -59,14 +100,6 @@ export default function Home() { const {t} = useLanguage(); const {projects, exp
           <ul className="experience-highlights">{experience.highlights.map(item => <li key={item}>{item}</li>)}</ul>
         </div>
       </article>)}
-    </section>
-    <section className="simple-education" id="education" aria-labelledby="education-heading">
-      <h2 id="education-heading">{t.cv.education}</h2>
-      {education.map(item => <div className="education-entry" key={item.school}>
-        <p className="education-degree">{item.degree}</p>
-        <p className="education-school">{item.school} · {item.location}</p>
-        <p className="education-meta">{item.period} · {item.detail}</p>
-      </div>)}
     </section>
     <section className="simple-work" id="work" aria-labelledby="work-heading">
       <h2 id="work-heading">{t.home.projects}</h2>

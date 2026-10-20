@@ -35,6 +35,13 @@
 .project-with-image.is-revealed .project-media-trigger,
 .project-media-trigger:focus-visible { opacity: 1; }
 .project-media-trigger:focus-visible { outline: 2px solid var(--mint); outline-offset: 2px; }
+.project-video-control {
+  position: absolute; top: 14px; right: 14px; z-index: 3;
+  font: 9px/1 monospace; letter-spacing: 1.2px; text-transform: uppercase;
+  color: var(--mint); background: #101314e6; border: 1px solid #b8f0d444;
+  padding: 10px; min-height: 36px; border-radius: 3px; cursor: pointer;
+}
+.project-video-control:focus-visible { outline: 2px solid var(--mint); outline-offset: 2px; }
 .project-with-image .simple-project-heading { padding: 30px 25px; align-self: end; }
 .project-with-image .simple-project-heading h3 { font-size: 26px; line-height: 1.2; text-shadow: 0 2px 4px #000, 0 0 12px #000; }
 .project-with-image .simple-project-heading > p { color: white; text-shadow: 0 1px 3px #000, 0 0 6px #000; }
