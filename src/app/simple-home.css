@@ -21,7 +21,14 @@
 .simple-direct a:hover { color: var(--mint); text-decoration: underline; text-underline-offset: 4px; }
 .simple-status { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 22px 0 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 60px; }
 .simple-status-open { grid-column: 1 / -1; display: flex; align-items: center; gap: 11px; margin: 0; font: 11px monospace; letter-spacing: 1.4px; color: var(--mint); }
-.simple-status-open .dot { margin-right: 0; width: 6px; height: 6px; }
+.simple-status-open .dot { margin-right: 0; width: 6px; height: 6px; flex-shrink: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .simple-status-open .dot { animation: availability-blink 2s ease-in-out infinite; }
+}
+@keyframes availability-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .25; }
+}
 .simple-status-target { margin: 0; font-size: 15px; line-height: 1.7; color: var(--text); max-width: 560px; }
 .simple-status-now { margin: 0; font-size: 13px; line-height: 1.7; color: var(--muted); }
 .simple-photo { width: 100%; height: auto; display: block; border-radius: 6px; }
