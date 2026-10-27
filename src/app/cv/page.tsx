@@ -33,7 +33,7 @@ export default function Resume() {
         {education.map(item => <div className="cv-entry" key={item.school}>
           <h3>{item.degree}</h3>
           <p className="cv-entry-org">{item.school}, {item.location}</p>
-          <p className="cv-entry-date">{item.detail} | {item.period}</p>
+          <p className="cv-entry-date">{[item.detail, item.period].filter(Boolean).join(' | ')}</p>
         </div>)}
       </section>
 

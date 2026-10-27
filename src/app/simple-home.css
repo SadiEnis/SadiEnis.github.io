@@ -37,6 +37,7 @@
 .simple-education { border-top: 1px solid var(--line); padding: 40px 0 15px; }
 .simple-education h2 { font-size: 27px; letter-spacing: -.7px; margin-bottom: 20px; }
 .education-entry { display: grid; grid-template-columns: 1fr auto; gap: 4px 30px; align-items: baseline; }
+.education-entry + .education-entry { margin-top: 24px; }
 .education-degree { grid-column: 1; margin: 0; font-size: 17px; color: var(--text); }
 .education-school { grid-column: 1; margin: 0; font-size: 14px; color: var(--muted); }
 .education-meta { grid-column: 2; grid-row: 1 / span 2; margin: 0; font: 11px monospace; letter-spacing: 1px; color: var(--muted); text-align: right; white-space: nowrap; }

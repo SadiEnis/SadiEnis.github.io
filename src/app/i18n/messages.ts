@@ -92,7 +92,7 @@ const tr: Messages = {
   },
   titles: { home: 'Sadi Enis Güçlüer — Game Developer', contact: 'İletişim · Sadi Enis', motivation: 'Motivasyon · Sadi Enis', cv: 'Özgeçmiş · Sadi Enis' },
   description: 'Unity ile profesyonel deneyime ve Unreal Engine ile kişisel çalışmalara sahip oynanış programcısı. Projelerimi, motivasyonumu ve iletişim bilgilerimi inceleyin.',
-  education: education.map(item => ({...item, period: 'Mezun 2026'})),
+  education: education.map(item => ({...item, period: item.school === 'GameDev.ist' ? '26 Ekim 2026 – Devam ediyor' : 'Mezun 2026'})),
   references,
   languages: ['Türkçe', 'İngilizce'],
   experiences: [
@@ -148,7 +148,7 @@ const pl: Messages = {
   },
   titles: { home: 'Sadi Enis Güçlüer — Game Developer', contact: 'Kontakt · Sadi Enis', motivation: 'Motywacja · Sadi Enis', cv: 'CV · Sadi Enis' },
   description: 'Programista rozgrywki z doświadczeniem zawodowym w Unity i własnymi projektami w Unreal Engine. Poznaj moje projekty, motywację i dane kontaktowe.',
-  education: education.map(item => ({...item, period: 'Ukończone 2026'})),
+  education: education.map(item => ({...item, period: item.school === 'GameDev.ist' ? '26 października 2026 – obecnie' : 'Ukończone 2026'})),
   references,
   languages: ['Turecki', 'Angielski'],
   experiences: [

@@ -1,5 +1,12 @@
 export const education = [
   {
+    degree: 'Deepjam Game Design and Marketing Bootcamp',
+    school: 'GameDev.ist',
+    location: 'Online',
+    period: '26 October 2026 – Present',
+    detail: '',
+  },
+  {
     degree: 'Computer Engineering',
     school: 'Kayseri University',
     location: 'Kayseri, Türkiye',

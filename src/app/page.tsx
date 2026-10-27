@@ -83,7 +83,7 @@ export default function Home() { const {t} = useLanguage(); const {projects, exp
       {education.map(item => <div className="education-entry" key={item.school}>
         <p className="education-degree">{item.degree}</p>
         <p className="education-school">{item.school} · {item.location}</p>
-        <p className="education-meta">{item.period} · {item.detail}</p>
+        <p className="education-meta">{[item.period, item.detail].filter(Boolean).join(' · ')}</p>
       </div>)}
     </section>
     <section className="experiences" id="experience" aria-labelledby="experience-heading">
